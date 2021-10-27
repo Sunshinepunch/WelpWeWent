@@ -24,5 +24,16 @@ namespace Welp.Models
 
       return reviewList;
     }
+
+    public static Review GetDetails(int id)
+    {
+      var apiCallTask = ApiHelper.GetAll();
+      var result = apiCallTask.Result;
+
+      JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
+      Review review = JsonConvert.DeserializeObject<Review>(jsonResponse.ToString());
+
+      return review;
+    }
   }
 }

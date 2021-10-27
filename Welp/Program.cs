@@ -16,7 +16,7 @@ namespace Welp
   {
     static void Main()
     {
-      var apiCallTask = ApiHelper.ApiCall("[YOUR-API-KEY-HERE]");
+      var apiCallTask = ApiHelper.ApiCall("");
       var result = apiCallTask.Result;
       JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
       Console.WriteLine(jsonResponse["results"]);
@@ -27,9 +27,9 @@ namespace Welp
   {
     public static async Task<string> ApiCall(string apiKey)
     {
-      RestClient client = new RestClient("https://api.nytimes.com/svc/topstories/v2");
+      RestClient client = new RestClient("http://localhost5000");
       RestRequest request = new RestRequest($"home.json?api-key={apiKey}", Method.GET);
-      var response = await client.ExecuteTaskAsync(request);
+      var response = await client.ExecuteAsync(request);
       return response.Content;
     }
   }

@@ -1,0 +1,14 @@
+@using Welp.Models
+@{
+  Layout = "_Layout";
+}
+
+<ol>
+  @foreach (Review review in Model)
+  {
+    <ul>
+      <li>ID: @review.ReviewId</li>
+      <li>Comment: @review.Comment</li>
+      <li>Rating: @review.Rating</li>
+    </ul>
+  }
