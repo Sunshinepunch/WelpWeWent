@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+
+<h1> Edit Reviews:</h1>
+
+<form action="/Reviews/Details/@(Model.ReviewId)" method="post">
+  <label for="rating">Review Rating: </label>
+  <input id="rating" name="rating" type="num" value="@(Model.Rating)">
+  <label for="comment">Comment: </label>
+  <input id="comment" name="comment" type="text" value="@(Model.Comment)">
+  <button type="submit">Submit Changes</button>
+</form>
+
+<a href="/Reviews/Details/@(Model.ReviewId)"><p>Return to Details</p></a>

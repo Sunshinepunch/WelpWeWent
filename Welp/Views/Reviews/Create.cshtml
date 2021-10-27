@@ -1,0 +1,19 @@
+@using Welp.Models
+@{
+  Layout = "_Layout";
+}
+@model Welp.Models.Review
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Rating)
+  @Html.TextBoxFor(model => model.Rating)
+
+  @Html.LabelFor(model => model.Comment)
+  @Html.TextBoxFor(model => model.Comment)
+
+  @Html.DisplayFor(model => model.DestinationId)
+  @Html.DropDownList("DestinationId")
+
+  <input type="submit" value="Create">
+}
