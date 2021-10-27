@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using System.Security.Claims;
+using System.Diagnostics;
 
 namespace Welp.Controllers
 {
@@ -23,7 +24,7 @@ namespace Welp.Controllers
     [AllowAnonymous]
     public ActionResult Index()
     {
-    var allReviews = Reviews.GetReviews();
+    var allReviews = Review.GetReviews();
     return View(allReviews);
     }
 

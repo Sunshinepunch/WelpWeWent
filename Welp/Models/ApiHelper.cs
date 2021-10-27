@@ -17,7 +17,7 @@ namespace Welp.Models
     {
       RestClient client = new RestClient("http://localhost:5000/api");
       RestRequest request = new RestRequest($"reviews/{id}", Method.GET);
-      var response = await client.ExecuteTaskAsync(request);
+      var response = await client.ExecuteAsync(request);
       return response.Content;
     }
   }

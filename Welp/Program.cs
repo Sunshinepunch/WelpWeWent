@@ -12,25 +12,18 @@ using Newtonsoft.Json.Linq;
 
 namespace Welp
 {
-  class Program
-  {
-    static void Main()
+    public class Program
     {
-      var apiCallTask = ApiHelper.ApiCall("");
-      var result = apiCallTask.Result;
-      JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
-      Console.WriteLine(jsonResponse["results"]);
-    }
-  }
+        public static void Main(string[] args)
+        {
+            CreateHostBuilder(args).Build().Run();
+        }
 
-  class ApiHelper
-  {
-    public static async Task<string> ApiCall(string apiKey)
-    {
-      RestClient client = new RestClient("http://localhost5000");
-      RestRequest request = new RestRequest($"home.json?api-key={apiKey}", Method.GET);
-      var response = await client.ExecuteAsync(request);
-      return response.Content;
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
     }
-  }
 }
