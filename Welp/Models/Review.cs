@@ -13,7 +13,6 @@ namespace Welp.Models
     public int Rating { get; set; }
 
 
-
     public static List<Review> GetReviews()
     {
       var apiCallTask = ApiHelper.GetAll();
@@ -27,13 +26,30 @@ namespace Welp.Models
 
     public static Review GetDetails(int id)
     {
-      var apiCallTask = ApiHelper.GetAll();
+      var apiCallTask = ApiHelper.Get(id);
       var result = apiCallTask.Result;
 
       JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
       Review review = JsonConvert.DeserializeObject<Review>(jsonResponse.ToString());
 
       return review;
+    }
+
+    public static void Post(Review review)
+    {
+      string jsonReview = JsonConvert.SerializeObject(review);
+      var apiCallTask = ApiHelper.Post(jsonReview);
+    }
+    
+    public static void Put(Review review)
+    {
+      string jsonReview = JsonConvert.SerializeObject(review);
+      var apiCallTask = ApiHelper.Put(review.ReviewId, jsonReview);
+    }
+
+    public static void Delete(int id)
+    {
+      var apiCallTask = ApiHelper.Delete(id);
     }
   }
 }
